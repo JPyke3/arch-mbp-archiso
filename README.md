@@ -1,6 +1,6 @@
 # arch-mbp-archiso
 ## Introduction
-These are the build scripts for compiling an Arch Linux iso image using the kernel patches by [@MCMrARM](https://github.com/MCMrARM). This build script has only been tested with 2018 MacBook pro 13" Models, as such further teesting needs to take place on newer models.
+These are the build scripts for compiling an Arch Linux iso image using the kernel patches by [@MCMrARM](https://github.com/MCMrARM). This build script has only been tested with 2018 MacBook pro 13" Models, as such further testing needs to take place on newer models.
 
 ## Downloads
 Any of the ISO Files I have personally compiled can be found in the releases section
