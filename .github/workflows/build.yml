@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.2
+    - run: pacman -Syu archiso base-devel
+      name: Update system and install deps
+    - name: Build iso
+      run: |
+        cd /__w/"$(echo -e "$GITHUB_REPOSITORY" | sed 's/.*\///g')"/"$(echo -e "$GITHUB_REPOSITORY" | sed 's/.*\///g')";
+        ./build.sh -v
+    - uses: actions/upload-artifact@v2
+      name: Upload Artifacts
+      if: ${{ always() }}
+      with:
+        name: out
+        path: /__w/"$(echo -e "$GITHUB_REPOSITORY" | sed 's/.*\///g')"/"$(echo -e "$GITHUB_REPOSITORY" | sed 's/.*\///g')"/out # or path/to/artifact
