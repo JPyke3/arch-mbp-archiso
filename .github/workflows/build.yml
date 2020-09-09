@@ -19,7 +19,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2.3.2
-    - run: pacman -Syu archiso base-devel
+    - run: pacman -Syu archiso base-devel --noconfirm
       name: Update system and install deps
     - name: Build iso
       run: |
